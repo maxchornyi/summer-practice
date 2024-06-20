@@ -1,0 +1,21 @@
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i + 1, n):
+            if arr[j][1] < arr[min_idx][1]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    return arr
+
+teams = ["Ferrari", "McLaren", "Mercedes", "Red Bull", "Alpine", "Aston Martin"]
+points = []
+
+for team in teams:
+    point = int(input(f"Скільки очок заробила команда {team} за сезон? "))
+    points.append((team, point))
+
+sorted_teams = selection_sort(points)
+
+for team, point in sorted_teams:
+    print(f"{team} - {point}")
