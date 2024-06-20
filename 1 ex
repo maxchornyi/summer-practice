@@ -1,0 +1,25 @@
+def binary_search(arr, x):
+    low, high = 0, len(arr) - 1
+    
+    while low <= high:
+        mid = (low + high) // 2
+        
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] < x:
+            low = mid + 1
+        else:
+            high = mid - 1
+    
+    return None
+
+arr = [1, 2, 4, 5, 7, 9, 11, 13]
+
+x = int(input("Число на вибір: "))
+
+result = binary_search(arr, x)
+
+if result is not None:
+    print(f"Число {x} знайдено на місці {result}")
+else:
+    print("Шкода, числа не знайдено:(")
