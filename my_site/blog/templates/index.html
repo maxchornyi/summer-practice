@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  My Blog
+{% endblock %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static "post.css" %}">
+  <link rel="stylesheet" href="{% static "index.css" %}">
+{% endblock %}
+
+{% block content %}
+  <section id="welcome">
+    <header>
+      <img src="{% static "images/photo_2024-08-26_17-36-31.jpg"%}" alt="Happiness's" />
+      <h2>Happiness's blog</h2>
+    </header>
+    <p>This is my blog where I share cutiest cuties in the world</p>
+  </section>
+
+  <section id="latest-posts">
+    <h2>My Latest Thoughts</h2>
+    <ul>
+      {% for post in posts %}
+        {% include "includes/post.html" %}
+      {% endfor %}
+    </ul>
+    
+  </section>
+  <section id="about">
+    <h2>About us</h2>
+    <p>I love animals and I love sharing them with you
+    </p>
+  </section>
+{% endblock %}
