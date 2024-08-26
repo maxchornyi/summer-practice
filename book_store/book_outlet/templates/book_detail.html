@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title%}
+   {{ title }}
+{% endblock %}
+
+{% block content%}
+<style>
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Стилі для кнопки повернення */
+.back-button {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.back-button a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #2179e7;
+    border-radius: 5px;
+    background-color: #2179e7;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.back-button a:hover {
+    background-color: #2179e7;
+    color: #fff;
+}
+
+/* Стилі для заголовків */
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 0;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #666;
+    text-align: center;
+    font-size: 1.8em;
+    margin: 10px 0;
+}
+
+h3 {
+    color: #2179e7;
+    font-size: 1.5em;
+    margin: 20px 0 10px;
+}
+
+/* Стилі для тексту книги */
+p {
+    font-size: 1.2em;
+    text-align: center;
+    color: #555;
+}
+
+p b {
+    color: #333;
+}
+
+/* Список країн публікації */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul li:nth-child(odd) {
+    background: #f2f2f2;
+}
+
+ul li:nth-child(even) {
+    background: #fff;
+}
+  }
+</style>
+<p class=back-button><a href="{% url "home" %}">back </a></p>
+   <h1>{{title}}</h1>
+   <h2>{{author}}</h2>
+   <p>The book has a rating of {{rating}}
+    
+    {%if is_bestseller%}
+     and is a bestseller
+    {% else %}
+     but isn't a bestseller
+    {% endif %}
+
+</p>
+<h3>Published in the following countries:</h3>
+<ul>
+    {% for country in published_countries %}
+        <li>{{ country.name }}</li>
+    {% empty %}
+        <li>This book hasn't been published in any country yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

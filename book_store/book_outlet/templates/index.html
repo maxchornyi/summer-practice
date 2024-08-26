@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title%}
+   All Books
+{% endblock %}
+
+{% block content%}
+
+<style>
+ body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Стилі для заголовка */
+h1 {
+    color: #4CAF50;
+    text-align: center;
+    margin-top: 0;
+}
+
+/* Список книг */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+ul li a:hover {
+    color: #4CAF50;
+}
+
+/* Стилі для статистики */
+p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+p:last-of-type {
+    font-size: 1.1em;
+    color: #2179e7;
+}
+</style>
+
+   <ul>
+      {% for book in books %}
+      <li><a href="{{book.get_absolute_url}}">{{ book.title }}</a> (Rating: {{book.rating}})  </li>
+      {% endfor %}
+   </ul>
+   
+   <hr>
+
+   <p>Total Number of Books:{{ total_number_of_books }} </p>
+   <p>Averega Rating:{{ average_rating.rating__avg }} </p>
+{% endblock %}
